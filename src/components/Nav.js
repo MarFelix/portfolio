@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiHomeAlt, BiUser } from 'react-icons/bi';
-import { BsClipboardData, BsBriefcase, BsChatSquare } from 'react-icons/bs';
+import { BsClipboardData, BsBriefcase, BsChatSquareText } from 'react-icons/bs';
 
 // Link 
 import { Link } from 'react-scroll';
@@ -11,17 +11,41 @@ const Nav = () => {
       <div className="container mx-auto">
         {/* nav inner */}
         <div className='w-full bg-black/20 h-[96px] backdrop-blur-2x1 rounded-full max-w-[460px] mx-auto px-5 flex items-center justify-between text-2x1 text-white/50'>
-          <Link className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
+          <Link to="home"
+            activeClass="active"
+            smooth={true}
+            spy={true} 
+            offset={-200}
+            className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
             <BiHomeAlt />
           </Link>
-          <Link className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
+          <Link to="about"
+            smooth={true}
+            spy={true} 
+            activeClass="active" 
+            className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
             <BiUser/>
           </Link>
-          <Link className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
+          <Link to="services"
+            activeClass="active" 
+            smooth={true}
+            spy={true} 
+            className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
             <BsClipboardData />
           </Link>
-          <Link className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
+          <Link to="work"
+            smooth={true}
+            spy={true} 
+            activeClass="active" 
+            className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
             <BsBriefcase />
+          </Link>
+          <Link to="contact"
+            activeClass="active"
+            smooth={true}
+            spy={true}  
+            className='cursor-pointer w-[60px] h-[60px] flex items-center justify-center'>
+            <BsChatSquareText />
           </Link>
         </div>
       </div>  
