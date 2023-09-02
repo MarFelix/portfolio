@@ -1,6 +1,6 @@
 import React from 'react';
 // images
-import Image from '../assets/avatar.svg';
+import Image from '../assets/me.png';
 //icons 
 import { FaGithub, FaYoutube, FaDribbble } from 'react-icons/fa';
 // type animation
@@ -90,7 +90,7 @@ const Banner = () => {
             initial='hidden'
             whileInView={'show'}
             className='hidden lg:flex flex-1 max-w-[320px] lg:max-w-[482px] '>
-            <img src={Image} alt="" />
+            <img className='h-96 w-96 rounded-full object-cover ' src={Image} alt="" />
           </motion.div>
         </div>
       </div>  
