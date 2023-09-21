@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 //motion 
 import { motion } from "framer-motion";
 // variants
 import { fadeIn } from "../variants";
+// Email Js 
+import emailjs from '@emailjs/browser';
+
 const Contact = () => {
+  const form = useRef();
+ 
+  const sendEmail = (e) => {
+    e.preventDefault(); // prevents the page from reloading when you hit “Send”
+ 
+    emailjs.sendForm('service_zd4gih7', 'template_ii5up4m', form.current, 'xS-TdrNRnihGH3Q0l')
+      .then((result) => {
+        console.log("enviado");
+        e.target.reset();
+          // show the user a success message
+      }, (error) => {
+
+        console.log("no envió" , error );
+          // show the user an error
+      });
+  }
   return (
     <div className='py-16 lg:sec' id='contact'>
       <div className='container mx-auto'>
@@ -30,18 +49,23 @@ const Contact = () => {
             initial='hidden'
             whileInView={'show'}
             viewport={{once:false, amount:0.3}}
+            ref={form}
+            onSubmit={sendEmail}
             className='flex-1 border rounded-2xl flex flex-col gap-y-6 pb-24 p-6 items-start' action=""
           >
             <input 
               className='bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all' 
               type="text"
+              name='name'
               placeholder='Your Name' />
             <input 
               className='bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all' 
               type="text"
+              name='email'
               placeholder='Your Email' />
             <textarea 
               className='bg-transparent border-b py-12 outline-none w-full placeholder:text-white focus:border-accent transition-all resize-none mb-12' 
+              name='message'
               placeholder='Your Message'></textarea>
               <button className='btn btn-lg' >Send Message</button>
           </motion.form>
